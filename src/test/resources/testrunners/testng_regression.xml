@@ -22,7 +22,7 @@
 		</classes>
 	</test>
 	
-	<test name="Accounts Page Test">
+	<!--<test name="Accounts Page Test">
 		<parameter name="browser" value="firefox" />
 
 		<classes>
@@ -31,7 +31,7 @@
 	</test>
 
 	
-	<!--<test name="Login Page Test firefox">
+	<test name="Login Page Test firefox">
 		<parameter name="browser" value="firefox" />
 
 		<classes>
