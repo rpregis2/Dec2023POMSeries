@@ -16,6 +16,8 @@ import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegistrationPage;
 import com.qa.opencart.pages.SearchResultsPage;
 
+import io.qameta.allure.Step;
+
 public class BaseTest {
 	
 	WebDriver driver;
@@ -29,15 +31,19 @@ public class BaseTest {
 	protected RegistrationPage registrationPage;
 	protected SoftAssert softAssert;
 	
-	@Parameters({"browser"})
+	@Step("Setup: launching {0} browser & init the properties")
+	@Parameters({"browser", "browserversion", "testname"})
 	@BeforeTest
-	public void setup(String browserName) {
+	public void setup(String browserName, String browserVersion, String testName) {
 		df = new DriverFactory();
 		prop = df.initProp();
 		
 		
 			if(browserName!=null) {
 				prop.setProperty("browser", browserName);
+				prop.setProperty("browserversion", browserVersion);
+				prop.setProperty("testname", testName);
+
 			}
 		
 		
@@ -46,6 +52,7 @@ public class BaseTest {
 		softAssert = new SoftAssert();
 	}
 	
+	@Step("Closing browser")
 	@AfterTest
 	public void tearDown() {
 		driver.quit();
